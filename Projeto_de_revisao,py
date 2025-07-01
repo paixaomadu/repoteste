@@ -1,0 +1,67 @@
+#importação 
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+#projeto 1 ---------------------------------------------------------------
+#importação do cvs
+df= pd.read_csv('DOMensalEstadoDesde1991.csv', sep= ';', encoding='latin1')
+df
+
+#filtro do ano
+df_ano= df.loc[(df['ano'] >= 2015)]
+df_ano
+
+#juncao do ano e recuperação de veículos
+df_rec = df_ano.groupby('ano')['recuperacao_veiculos'].sum().reset_index()
+df_rec= df_rec.sort_values(by= 'ano')
+df_rec
+
+#grafico de recuperação
+df_ano.plot(x='ano', y='recuperacao_veiculos',kind= 'line')
+plt.title('Recuperação de veículos')
+plt.xlabel('\nAno\n')
+plt.ylabel('\nquantidade de veículos\n')
+plt.show()
+
+#juncao do ano, furtos e roubos
+df_vei = df_ano.groupby('ano')[['furto_veiculos' ,'roubo_veiculo']].sum().reset_index()
+df_vei
+
+#grafico dos furtos
+df_ano.plot(x='ano', y='furto_veiculos',kind= 'line')
+plt.title('Furtos de veículos')
+plt.xlabel('\nAno\n')
+plt.ylabel('\nquantidade de veículos\n')
+plt.show()
+
+#grafico de roubo
+df_ano.plot(x='ano', y='roubo_veiculo',kind= 'line')
+plt.title('Roubo de veículos')
+plt.xlabel('\nAno\n')
+plt.ylabel('\nquantidade de veículos\n')
+plt.show()
+
+#relação entre furtos e recuperação de veículos
+plt.scatter(df_ano['furto_veiculos'] , df_ano['recuperacao_veiculos'])
+plt.show() 
+
+#relação entre roubos e recuperação 
+plt.scatter(df_ano['roubo_veiculo'] , df_ano['recuperacao_veiculos'])
+plt.show()
+
+#array de recuperação
+array1= df_ano['recuperacao_veiculos']
+dados1= np.array(array1)
+
+
+
+#projeto 2 ---------------------------------------------------------------
+#importação 
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+#importação do cvs
+df= pd.read_csv('https://www.ispdados.rj.gov.br/Arquivos/BaseMunicipioMensal.csv', sep= ';', encoding='latin1')
+df

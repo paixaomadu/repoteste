@@ -15,7 +15,7 @@ tempo= df['Tempo de Espera (min)']
 dados= np.array(tempo)
 dados
 
-#separar os 25% d3 clientes com menor tempo de espera
+#separar os 25% de clientes com menor tempo de espera
 q1= np.percentile(dados, 25)
 q1
 
