@@ -125,7 +125,7 @@ plt.xlabel('\nQuantidade de apreensões\n')
 plt.ylabel('\nMunicípios\n')
 plt.show()
 
-#array, ,édia, mediana e distancia de apreensões
+#array, média, mediana e distancia de apreensões
 array= df_apre['aaapai']
 dados= np.array(array)
 
@@ -240,4 +240,5 @@ df_maior
 #condição maior que 25%
 df_maior= df_vio.loc[(df_vio['Crimes violentos'] >= q1)]
 df_maior=df_maior[['munic', 'Crimes violentos']]
+df_maior= df_maior.sort_values(by= 'Crimes violentos')
 df_maior
